@@ -162,38 +162,6 @@
       }
       animateBurst();
     }
-
-    // Photo replace (open file chooser)
-    const photo = document.getElementById('photo');
-    const photoImg = document.getElementById('photoImg');
-    photo.addEventListener('click',()=>{
-      const input = document.createElement('input');
-      input.type = 'file'; input.accept = 'image/*';
-      input.onchange = e => {
-        const f = e.target.files[0];
-        if(!f) return;
-        const url = URL.createObjectURL(f);
-        photoImg.src = url;
-      };
-      input.click();
-    });
-
-    // Edit text inline
-    document.getElementById('customize').addEventListener('click',()=>{
-      const newText = prompt('Edite a mensagem:', message.textContent);
-      if(newText !== null) message.textContent = newText;
-    });
-
-    // Accessibility: allow keyboard toggle hearts (H key)
-    window.addEventListener('keydown',(e)=>{
-      if(e.key.toLowerCase()==='h') toggleBtn.click();
-    });
-
-    // Stop canvas animations when tab not visible to save CPU
-    document.addEventListener('visibilitychange',()=>{
-      if(document.hidden) cancelAnimationFrame(loop);
-      else loop();
-    });
   </script>
 </body>
 </html>
